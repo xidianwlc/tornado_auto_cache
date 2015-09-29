@@ -5,7 +5,7 @@
 Copyright (c) 2013,掌阅科技
 All rights reserved.
 
-File Name: tornado_exm.py
+File Name: tornado_auto_cache.py
 Author: WangLichao
 Created on: 2014-03-12
 '''
@@ -144,7 +144,7 @@ def auto_cache(method):
 
 class MainHandler(tornado.web.RequestHandler):
     def initialize(self):
-        self.cache = memcache.Client(['192.168.6.184:11000']) 
+        self.cache = memcache.Client(['localhost:11000']) 
 
     def get(self, module):
         module = self.parse_module(module)
@@ -195,7 +195,7 @@ class MainHandler(tornado.web.RequestHandler):
         return value
 
 application = tornado.web.Application([
-    (r"/cps(/[a-zA-Z/]*)?", MainHandler),
+    (r"/test(/[a-zA-Z/]*)?", MainHandler),
 ])
 
 if __name__ == "__main__":
